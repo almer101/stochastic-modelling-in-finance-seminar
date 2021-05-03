@@ -83,18 +83,9 @@ Pretpostavimo da možemo trgovati dionicom \textbf{XYZ} kojoj je trenutna cijena
 
 \section{Pregled formule}
 
-\begin{centering}
-    \begin{math}
-        C = N(d_1)S_0 - N(d_2)Ke^{-rt}
-    \end{math} \\
-    \vspace{0.7cm}
-    \begin{math}
-        gdje \hspace{0.1cm} je \hspace{0.2cm} d_1 = \frac{ln\frac{S_t}{K} + (r+\frac{\sigma^2}{2})t}{\sigma\sqrt{t}}
-    \end{math} \\
-    \begin{math}
-        i \hspace{0.2cm} d_2 = d_1 - \sigma \sqrt{t}
-    \end{math} \\
-\end{centering}
+\[ C = N(d_1)S_0 - N(d_2)Ke^{-rt} \]
+\[ gdje \hspace{0.1cm} je \hspace{0.2cm} d_1 = \frac{ln\frac{S_t}{K} + (r+\frac{\sigma^2}{2})t}{\sigma\sqrt{t}} \]
+\[i \hspace{0.2cm} d_2 = d_1 - \sigma \sqrt{t}\]
 
 \noindent $C =$ cijena Call opcije \\
 $N =$ funkcija razdiobe normalne razdiobe\\
@@ -106,10 +97,8 @@ $\sigma =$ volatilnost cijene dionice \\
 
 \noindent Kada imamo sve gore navedene parametre, formulom dobijemo cijenu europske call opcije. Cijena put opcije iste dionice, s istim dospijećem i istom izvršnom cijenom dobije se pomoću put-call pariteta koji povezuje te dvije cijene:
 
-\begin{centering}
-    $C + PV(K) = P + S_0$ \\
-    $PV(K) = \frac{K}{(1+r)^t}$ \\
-\end{centering}
+    \[ C + PV(K) = P + S_0 \]
+    \[ PV(K) = \frac{K}{(1+r)^t} \]
 
 \noindent $C =$ cijena Call opcije \\
 $P =$ cijena Put opcije \\
@@ -119,20 +108,65 @@ $r =$ kamatna stopa nerizičnog ulaganja \\
 
 Kada postoji odstupanje od Put-Call pariteta, odnosno 2 strane jednadžbe nisu jednake, onda postoji prilika za arbitražu. Međutim takve prilike su obično jako rijetke i kratkog vijeka, a ako se i nađu, onda su potrebne izuzetno velike količine kapitala ne bi li se ostvario značajan profit.
 
-% INSERT - prica o odredivanju implied volatilitya iz call - put opcija %
-
-\chapter{Modeli za mjerenje kreditnog rizika}
-\section{Strukturni modeli}
-\section{Modeli intenziteta}
-
-\chapter{Stohastička teorija portfelja}
-\section{Moderna teorija portfelja}
-
-\section{Capital Asset Pricing Model (CAPM)}
+% INSERT - prica o odredivanju implied volatilitya iz call - put opcija
 
 \chapter{Simulacije i financijski modeli}
+
+% INSERT - opcenito o simulacijama
 \section{Monte-Carlo metoda}
+Monte-Carlo simulacija je metoda generiranja slučajnih varijabli u svrhu modeliranja rizika odnosno nesigurnosti nekog sustava. Slučajne varijable su modelirane po nekim poznatim distribucijama i svaka simulacija generira drugačije rezultate, jer je Monte-Carlo metoda nedeterministička. Simulacija se pokreće puno puta (npr. 1 000 000) i ako nas zanima npr. najgorih 1\% ishoda onda imamo 10 000 takvih ishoda i možemo vidjeti koliko loše stvari mogu poći.
+
+\subsection{Var (Value at Risk)}
+Jedna od primjena MC simulacija je kod odredivanje VaR-a (value at risk). To je metoda razvijena od strane velike banke JP Morgan za predviđanje najgoreg očekivanog povrata nekog portfelja uz određeni interval povjerenja. Točnije, ta metoda odgovara na pitanje: "S nekom fiksiranom sigurnošću (npr. 99\%) koliko ću najviše kapitala izgubiti u nekom određenom periodu?", a odgovor je oblika "U zadanom periodu, na temelju danih podataka, sa sigurnošću od 99\% možemo tvrditi da gubitak kapitala neće biti veći od $X$"
+
+% Monte Carlo za VaR za 1 varijablu - primjer
+
+% Matematika iza MC simulacije za multi-asset portfolio
+Konkretnije, za portfelj koji sadrži više dionica moguće je velikim brojem Monte-Carlo simulacija dobiti
+
 \section{Primjeri simulacije na BS modelu}
+
+\chapter{Modeli za mjerenje kreditnog rizika}
+Kreditni rizik je rizik propasti (defaulta) kompanije i smisleno je da osobe koje izdaju kredite žele primati premiju na rizik koji preuzimaju davanjem novaca drugoj strani. Što je kompanija stabilnija, rizik defaulta je manji, pa time očekujemo i da kamatna stopa kredita, koji je kompanija željela podići, bude manja.
+
+\section{Strukturni modeli}
+Ovakvi se modeli oslanjaju na određivanje rizika iz vrijednosti firme. Jedan od takvih modela je Mertonov model. Pretpostavka je da se vrijednost firme kreće kao geometrijsko Brownovo gibanje, kao što je i bio slučaj kod Black-Scholesove formule gdje se cijena dionice modelirala kao geometrijsko Brownovo gibanje.
+Zanimljivo je to da se ovim modelom zapravo modelira call opcija za vrijednost cijele kompanije uzimajući u obzir i sva dugovanja koje kompanija ima i na taj se način evaluira rizik.
+
+% insert formula
+%[Prodiskutirati formulu…]
+%[proučiti I dati primjer interpretacije modela]
+
+\section{Modeli intenziteta}
+% [potencijalno izbaciti ovaj dio ovisno o kolicini ovoga ispod]
+% [opis I navesti primjene]
+
+
+\chapter{Stohastička teorija portfelja (STP)}
+Stohastička teorija portfelja je relativno nova matematička teorija za analizu tržišta dionica, koju je razvio E. Robert Fernholz 2002. godine. STP oslanja se na uprabu kontinuiranih slučajnih procesa (preciznije neprekidnih semi-martingala) za predstavljanje cijena financijskih instrumenata.
+
+Svaka dionica u portfelju predstavljena je kao proces njene cijene, obično u logaritamskom obliku. Neka imamo $n$ dionica u našem portfelju, onda je cijena dionice $i$ za $i=1,...,n$ dana kontinuiranim semi-martingalom:
+
+\[ d \log X(t) = \gamma(y)dt + \sum_{\nu=1}^{d}\xi_{\nu}(t)dW_{\nu}(t) \]
+
+gdje je $(W_1,...,W_n)$ Brownovo gibanje, $\gamma$ je takozvana mjera rasta (\textit{eng. growth rate}) i zadovoljava \(\int_{0}^{T} |\gamma(t)| \,dt < \infty\). \(\xi_{\nu}, \nu = 1,...,n\) je proces volatilnosti (\textit{eng. volatility process}) i on predstavlja osjetljivost \(X\) na \(\nu\)-ti izvor nesigurnosti (\textit{eng. source of uncertainty}).
+Za sve \(\xi_{\nu}, \nu = 1,...,n\) vrijedi sljedeće:
+
+\[ \int_{0}^{T} (\xi_1(t) + \cdots + \xi_n(t)) \,dt < \infty\]
+\[ \lim_{t\to\infty} t^{-1}(\xi_1^2(t) + \cdots + \xi_n^2(t))\log\log t = 0 \]
+\[ \xi_1^2(t) + \cdots + \xi_n^2(t) > 0 \]
+
+
+
+Na prethodno opisani način definirano je ponašanje jedne dionice i bitno je spomenuti da se ovdje uzima kao pretpostavka da postoji samo 1 dionica na tržištu, odnosno \(X(t)\) predstavlja cjelokupnu tržišnu vrijednost firme u trenutku $t$.
+Pretpostavimo sada da imamo cijelu familiju dionica \(X_i,\) \(i = 1,...,n\) koje  se ponašaju na ovaj način:
+
+\[ d \log X_i(t) = \gamma_i(y)dt + \sum_{\nu=1}^{d}\xi_{i\nu}(t)dW_{\nu}(t) \]
+
+% bolje objasniti ksi, odnosno osjetljivost na src of uncertainty
+% 1.1.12 u knjizi mozda je zanimljivo za pokazati?
+% optimizacija portfelja, moda se VaR koristi kao heuristika
+% pokazati hedging sa opcijama (^ ali to gore pokazati)
 
 \chapter{Zaključak}
 Zaključak.
