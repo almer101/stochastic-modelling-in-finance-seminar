@@ -86,7 +86,7 @@ Izvod BS formule je dug i složen te nema smisla prepisivati ga ovdje pa ću sam
     \item $W_t$ je kontinuirano u vremenu
 \end{enumerate}
 
-Jedan od logičnih pretpostavki je to da cijena opcije mora ovisiti o vremenu i o cijeni dionice. Prvi korak u izvodu je korištenje Itove leme za određivanje promjene vremenski ovisne funkcije stohastičke varijable. Ideja iza dokaza je konstrukcija \textit{hedgiranog} portfelja uz neke dodatne pretpostavke kao što su, da su dopuštene kratke pozicije, da dionica ne isplaćuje dividende, da nema naknada na trgovanje te da ne postoji mogućnost arbitraže. \textit{Hedging} se koristi kada se želimo zaštititi od rizika i razlog zašto se to radi ovdje je da eliminiramo rizik povezan sa slučajnosti Brownovog gibanje koje karakterizira cijenu dionice. Jednom kada imamo konstruiran takav portfelj on je ne-rizičan \engl{risk-less} i očekivana vrijednost derivata se dobije tako da se diskontira na današnji trenutak pod očekivanom stopom povrata dionice za koju određujemo cijenu opcije. Postupak iziskuje još neke manevre, ali za detaljniju analizu i one koji žele saznati više upućujem na izvorni rad - \cite{}
+Jedan od logičnih pretpostavki je to da cijena opcije mora ovisiti o vremenu i o cijeni dionice. Prvi korak u izvodu je korištenje Itove leme za određivanje promjene vremenski ovisne funkcije stohastičke varijable. Ideja iza dokaza je konstrukcija \textit{hedgiranog} portfelja uz neke dodatne pretpostavke kao što su, da su dopuštene kratke pozicije, da dionica ne isplaćuje dividende, da nema naknada na trgovanje te da ne postoji mogućnost arbitraže. \textit{Hedging} se koristi kada se želimo zaštititi od rizika i razlog zašto se to radi ovdje je da eliminiramo rizik povezan sa slučajnosti Brownovog gibanje koje karakterizira cijenu dionice. Jednom kada imamo konstruiran takav portfelj on je ne-rizičan \engl{risk-less} i očekivana vrijednost derivata se dobije tako da se diskontira na današnji trenutak pod očekivanom stopom povrata dionice za koju određujemo cijenu opcije. Postupak iziskuje još neke manevre, ali za detaljniju analizu i one koji žele saznati više upućujem na izvorni rad - \cite{black2019pricing}
 
 \section{Pregled formule}
 
@@ -279,6 +279,7 @@ U povijesti su se dogodila neka velika postignuća u području financija kao št
 
 \bibliography{literatura}
 \bibliographystyle{fer}
+\nocite{*}
 
 \chapter{Sažetak}
 Počevši od opcija kao financijskih instrumenata i opisa kako se pomoću Black-Scholes modela može odrediti "fer" cijena opcija. Uz određene pretpostavke i osobine dionice za koju određujemo cijene opcija, uvrštavanjem u formulu uz željeno dospijeće i izvršnu cijenu, model nam daje "fer" cijenu Call opcije s danim osobinama. Bez obzira na to što pretpostavke BS modela nekada nisu ispunjene i dalje je izuzetno moćna metoda ne samo za određivanje cijena opcija nego i za \textit{hedging} pomoću opcija, koji iako bih volio pokriti nije bio u opsegu ovog seminarskog rada.
